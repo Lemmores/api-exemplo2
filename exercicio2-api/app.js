@@ -1,13 +1,15 @@
 const form = document.getElementById("form")
-const nome = document.getElementById("nome")
-const ultimonome = document.getElementById("ultimonome")
-const email = document.getElementById("e-mail")
-const senha = document.getElementById("senha")
-const endereco = document.getElementById("endereco")
-const numero = document.getElementById("numero")
 const uf = document.getElementById("uf")
-const cidade = document.getElementById("cidade")
-const bairro = document.getElementById("bairro")
+const city = document.getElementById("cidade")
+
+addEventListener("load", () => {
+    carregarUF()
+})
+
+
+uf.addEventListener("change", () => {
+    carregarMunicipios()
+})
 
 
 form.addEventListener("submit", (e) => {
@@ -15,45 +17,43 @@ form.addEventListener("submit", (e) => {
 })
 
 
-/*Usar o fetch aqui*/
-function consultarCep(n, u, e, s, en, num) {
-  
-    if (nValor != "" || n.cValor != null){
-        const p = document.getElementById("invalido")
-    }
-    if (uValor != "" || u.cValor != null){
-        const p = document.getElementById("invalido")
-    }
-    if (eValor != "" || e.cValor != null){
-        const p = document.getElementById("invalido")
-    }
-    if (sValor != "" || s.cValor != null){
-        const p = document.getElementById("invalido")
-    }
-    if (enValor != "" || en.cValor != null){
-        const p = document.getElementById("invalido")
-    }
-    if (numValor != "" || num.cValor != null){
-        const p = document.getElementById("invalido")
-    }else{
-    cep.className = "form-control is-invalid"
-    p.style.display = "block"
-    }
-    
-        
-        let url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" 
 
-        fetch(url).then(res => {
+function carregarUF() {
+    let url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
+
+    fetch(url).then(res => {
         return res.json()
-        }).then(saida => {
-        uf.value = saida.sigla
+    }).then(estados => {
+        estados.forEach(estado => {
+            let opt = criarNo("option")
+            opt.innerHTML = estado.sigla
+            opt.value = estado.sigla
+            anexarNo(opt, uf)
+        });
+    })
+}
+
+function carregarMunicipios() {
+    let sigla = uf.value
+    let url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + sigla + "/municipios"
+
+    fetch(url).then(res => {
+        return res.json()
+    }).then(cidades => {
+        cidades.forEach(cidade => {
+            let opt = criarNo("option")
+            opt.innerHTML = cidade.nome
+            opt.value = cidade.nome
+            anexarNo(opt, city)
         })
-    }
+    })
+}
 
 
-    
-    
-    
+function criarNo(el) {
+    return document.createElement(el)
+}
 
-
-
+function anexarNo(elf, elp) {
+    elp.appendChild(elf)
+}
