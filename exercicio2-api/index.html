@@ -1,84 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Cadastro</title>
 </head>
 
 <body>
-    <h1>Cadastro do Usuário</h1>
-    <main class="container">
-        <form action="" id="form">
-            <div class="row" >
-            <div class="col-5">
-                <label for="nome" class="form-label mt-3">Primeiro nome:</label>
-                <input type="text" name="nome" id="nome" class="form-control" >
-                </div>
-                <div class="col-5">
-                <label for="ultimonome" class="form-label mt-3">Último nome:</label>
-                <input type="text" name="ultimonome" id="ultimonome" class="form-control">
-                </div>
-                <div class="col-5">
-                <label for="cidade" class="form-label mt-3">E-mail:</label>
-                <input type="text" name="e-mail" id="e-mail" class="form-control" >
-                </div>
-                <div class="col-5">
-                <label for="senha" class="form-label mt-3">Senha:</label>
-                <input type="password" name="senha" id="senha" class="form-control">
-                </div>
-                <div class="col-7">
-                <label for="endereco" class="form-label mt-3">Endereço:</label>
-                <input type="text" name="endereco" id="endereco" class="form-control">
-                </div> 
-                <div class="col-3">
-                <label for="numero" class="form-label mt-3">Numero:</label>
-                <input type="text" name="numero" id="numero" class="form-control">
-                </div>
-                <div class="col-3">
-                <label for="uf" class="form-label mt-3">UF:</label>
-                </div>
-                <div >
-                <select name="uf" id="uf">
-                    <div>
-                    <option value="sel">Selecione...</option>
-                   </select>
-                </div>
-                <div class="col-5">
-                    <label for="cidade" class="form-label mt-3">Cidade:</label>
-                    </div>
-                    <div >
-                    <select name="cidade" id="cidade">
-                        <div>
-                        <option value="sel">Selecione...</option>
-                       </select>
-                    </div>
-                    <div class="col-5">
-                        <label for="bairro" class="form-label mt-3">Bairro:</label>
-                        </div>
-                        <div >
-                        <select name="bairro" id="bairro">
-                            <div>
-                            <option value="sel">Selecione...</option>
-                           </select>
-                        </div>
-                </div>
+    <main class="container mt-5" style="width: 50%;">
+        <h2 class="text-secondary mb-4">Cadastro de usuário</h2>
 
+        <form class="row g-3" id="form">
+            <div class="col-md-6">
+                <label for="pNome" class="form-label">Primeiro Nome</label>
+                <input type="text" class="form-control" id="pNome">
+                <p class="invalid-feedback">Campo obrigatório</p>
+            </div>
 
-                </div>
+            <div class="col-md-6">
+                <label for="uNome" class="form-label">Último Nome</label>
+                <input type="text" class="form-control" id="uNome">
+                <p class="invalid-feedback">Campo obrigatório</p>
+            </div>
 
+            <div class="col-md-6">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email">
+                <p class="invalid-feedback">Campo obrigatório</p>
+            </div>
+
+            <div class="col-md-6">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha">
+                <p class="invalid-feedback">Campo obrigatório</p>
+            </div>
+
+            <div class="col-9">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="endereco">
+                <p class="invalid-feedback">Campo obrigatório</p>
+            </div>
+
+            <div class="col-3">
+                <label for="num" class="form-label">Número</label>
+                <input type="number" class="form-control" id="num">
+                <p class="invalid-feedback">Campo obrigatório</p>
+            </div>
+
+            <div class="col-md-3">
+                <label for="uf" class="form-label">UF</label>
+                <select id="uf" class="form-select">
+                    <option selected>Selecione...</option>
+                </select>
+                <p class="invalid-feedback">Selecione a UF</p>
+            </div>
+
+            <div class="col-md-6">
+                <label for="cidade" class="form-label">Cidade</label>
+                <select id="cidade" class="form-select">
+                    <option selected>Selecione...</option>
+                    <option>...</option>
+                </select>
+                <p class="invalid-feedback">Selecione a Cidade</p>
+            </div>
+
+            <div class="col-md-3">
+                <label for="bairro" class="form-label">Bairro:</label>
+                <select id="bairro" class="form-select">
+                    <option selected>Selecione...</option>
+                    <option>...</option>
+                </select>
+                <p class="invalid-feedback">Selecione o bairro</p>
+            </div>
+            
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
         </form>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     <script src="app.js"></script>
-
 </body>
 
 </html>
